@@ -1,577 +1,332 @@
-# 📄 OCR Pipeline - Extração de Texto
+# 📄 OCR Pipeline
 
-Sistema profissional de OCR (Optical Character Recognition) para extração de texto de imagens e PDFs, com interface gráfica moderna.
+> Extraia texto de imagens e PDFs com reconhecimento óptico de caracteres (OCR) em português.
 
 ![Python](https://img.shields.io/badge/python-3.12+-blue.svg)
 ![Flet](https://img.shields.io/badge/flet-0.81.0-purple.svg)
 ![Tesseract](https://img.shields.io/badge/tesseract-OCR-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-lightgrey.svg)
 
-## 📋 Índice
+## 🎯 Sobre o Projeto
 
-- [Características](#-características)
-- [Instalação Windows](#-instalação-windows)
-- [Instalação Linux](#-instalação-linux)
-- [Como Usar](#-como-usar)
-- [Formatos Suportados](#-formatos-suportados)
-- [Troubleshooting](#-troubleshooting)
-- [Arquitetura](#-arquitetura)
+**OCR Pipeline** é uma aplicação desktop com interface gráfica moderna que permite extrair texto de documentos digitalizados (imagens e PDFs) usando tecnologia OCR (Optical Character Recognition). Ideal para digitalização de documentos, arquivamento e conversão de imagens em texto editável.
 
-## ✨ Características
+### ✨ Principais Características
 
-- 🎨 **Interface moderna** com Flet (Material Design)
-- 🌙 **Tema escuro** profissional
-- 📊 **Barra de progresso** em tempo real
-- 📝 **Log colorido** por tipo de mensagem
-- 🗂️ **Processamento em lote** de múltiplos arquivos
-- 📁 **Arquivos individuais** - Cada arquivo gera seu próprio `.md`
-- 🧹 **Limpeza automática** de texto
-- ⚡ **Multi-threading** - Não trava a interface
+- 🖥️ **Interface Gráfica Moderna** - Design intuitivo e profissional
+- 📁 **Processamento em Lote** - Processe múltiplos arquivos de uma vez
+- 🇧🇷 **OCR em Português** - Reconhecimento otimizado para idioma português
+- 🧹 **Limpeza Automática** - Texto formatado e pronto para uso
+- 📊 **Progresso em Tempo Real** - Acompanhe cada etapa do processamento
+- 💾 **Arquivos Individuais** - Um arquivo .md para cada documento processado
+- 🔒 **100% Local** - Seus dados não saem do seu computador
 
-## 🪟 Instalação Windows
+## 📸 Screenshots
 
-### Passo 1: Instalar Python 3.12+
+![Interface Principal](https://via.placeholder.com/800x500?text=Interface+Principal)
 
-1. **Baixar Python**
-   - Acesse: https://www.python.org/downloads/
-   - Baixe Python 3.12 ou superior
+*Interface moderna com tema escuro e organização clara*
 
-2. **Instalar**
-   - Execute o instalador
-   - ✅ **IMPORTANTE:** Marque "Add Python to PATH"
-   - Clique em "Install Now"
+## 🚀 Início Rápido
 
-3. **Verificar**
+### 📋 Requisitos
+
+- **Windows 10/11** ou **Linux** (Ubuntu, Debian, Fedora, Arch)
+- **Python 3.12** ou superior
+- **Tesseract OCR** instalado no sistema
+
+### 🪟 Instalação no Windows
+
+1. **Instale o Python**
+   - Baixe de [python.org/downloads](https://www.python.org/downloads/)
+   - Durante a instalação, marque "Add Python to PATH"
+
+2. **Instale o Tesseract OCR**
+   
+   **Opção A - Via Chocolatey (recomendado):**
    ```powershell
-   python --version
-   # Saída: Python 3.12.x
+   choco install tesseract
+   ```
+   
+   **Opção B - Instalador Manual:**
+   - Baixe de: [github.com/UB-Mannheim/tesseract/wiki](https://github.com/UB-Mannheim/tesseract/wiki)
+   - Execute o instalador e siga as instruções
+
+3. **Instale o Pacote de Idioma Português**
+   ```powershell
+   choco install tesseract-lang-por
+   ```
+   
+   Ou baixe manualmente: [por.traineddata](https://github.com/tesseract-ocr/tessdata_best/raw/main/por.traineddata) e copie para `C:\Program Files\Tesseract-OCR\tessdata\`
+
+4. **Clone o Projeto**
+   ```powershell
+   git clone https://github.com/filipeabraaodasilva/ocr.git
+   cd ocr
    ```
 
-### Passo 2: Instalar Tesseract OCR
+5. **Configure o Ambiente**
+   ```powershell
+   python -m venv .venv
+   .venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
 
-**Opção A: Via Chocolatey (Recomendado)**
-```powershell
-# Instalar Chocolatey (se não tiver)
-# Executar PowerShell como Administrador
-Set-ExecutionPolicy Bypass -Scope Process -Force
-iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+6. **Execute**
+   ```powershell
+   python main.py
+   ```
 
-# Instalar Tesseract
-choco install tesseract
-```
-
-**Opção B: Instalador Manual**
-1. Baixe: https://github.com/UB-Mannheim/tesseract/wiki
-2. Execute `tesseract-ocr-w64-setup-5.x.x.exe`
-3. Instale em: `C:\Program Files\Tesseract-OCR`
-4. Adicione ao PATH:
-   - Windows + R → `sysdm.cpl` → Enter
-   - Aba "Avançado" → "Variáveis de Ambiente"
-   - Edite "Path" → Novo → `C:\Program Files\Tesseract-OCR`
-   - OK → OK → Reinicie o terminal
-
-**Verificar:**
-```powershell
-tesseract --version
-# Saída: tesseract 5.x.x
-```
-
-### Passo 3: Instalar Pacote Português
-
-**Automático (Chocolatey):**
-```powershell
-choco install tesseract-lang-por
-```
-
-**Manual:**
-1. Baixe: https://github.com/tesseract-ocr/tessdata_best/raw/main/por.traineddata
-2. Copie para: `C:\Program Files\Tesseract-OCR\tessdata\`
-3. Verifique: `tesseract --list-langs` (deve mostrar "por")
-
-### Passo 4: Configurar Projeto
-
-```powershell
-# Baixar projeto
-git clone <url-do-repositorio>
-cd OCR
-
-# Criar ambiente virtual
-python -m venv .venv
-
-# Ativar ambiente virtual
-.venv\Scripts\activate
-
-# Instalar dependências
-pip install -r requirements.txt
-
-# Executar
-python main.py
-```
-
-## 🐧 Instalação Linux
-
-### Ubuntu/Debian
+### 🐧 Instalação no Linux
 
 ```bash
 # Instalar dependências do sistema
 sudo apt-get update
 sudo apt-get install -y tesseract-ocr tesseract-ocr-por python3.12 python3.12-venv git
 
-# Baixar projeto
-git clone <url-do-repositorio>
-cd OCR
+# Clonar projeto
+git clone https://github.com/filipeabraaodasilva/ocr.git
+cd ocr
 
-# Criar ambiente virtual
+# Configurar ambiente
 python3 -m venv .venv
 source .venv/bin/activate
-
-# Instalar dependências Python
 pip install -r requirements.txt
 
 # Executar
 python main.py
 ```
 
-### Outras Distribuições
-
-**Fedora/RHEL:**
-```bash
-sudo dnf install tesseract tesseract-langpack-por python3 python3-pip
-```
-
-**Arch Linux:**
-```bash
-sudo pacman -S tesseract tesseract-data-por python python-pip
-```
-
-## 🚀 Como Usar
+## 📖 Como Usar
 
 ### Passo a Passo
 
-1. **Abrir Aplicação**
+1. **Abra a Aplicação**
    ```bash
    python main.py
    ```
 
-2. **Selecionar Diretório**
-   - Clique em "📁 Selecionar Diretório"
-   - Escolha a pasta com seus arquivos
+2. **Selecione o Diretório**
+   - Clique no botão "📁 Selecionar Diretório"
+   - Escolha a pasta contendo seus arquivos (imagens ou PDFs)
 
-3. **Verificar Arquivos**
-   - Lista mostra todos os arquivos detectados
-   - Ícones coloridos indicam o tipo (PDF ou Imagem)
+3. **Visualize os Arquivos**
+   - A aplicação detecta automaticamente arquivos suportados
+   - Veja a lista com ícones coloridos indicando o tipo
 
-4. **Processar**
+4. **Inicie o Processamento**
    - Clique em "▶ Processar Arquivos"
-   - Acompanhe o progresso em tempo real
-   - Veja o log detalhado
+   - Acompanhe o progresso na barra de status
+   - Veja o log detalhado de cada arquivo
 
-5. **Resultado**
-   - Arquivos `.md` criados no mesmo diretório
+5. **Acesse os Resultados**
+   - Arquivos `.md` são criados no mesmo diretório
    - Um arquivo para cada documento processado
 
-### Exemplo de Uso
+### Exemplo Visual
 
 **Antes do processamento:**
 ```
-meus_documentos/
+documentos/
 ├── contrato.pdf
 ├── relatorio.pdf
-└── foto.jpg
+└── foto_documento.jpg
 ```
 
 **Depois do processamento:**
 ```
-meus_documentos/
+documentos/
 ├── contrato.pdf
-├── contrato.md       ← ✓ Texto extraído
+├── contrato.md              ← ✓ Texto extraído
 ├── relatorio.pdf
-├── relatorio.md      ← ✓ Texto extraído
-├── foto.jpg
-└── foto.md           ← ✓ Texto extraído
+├── relatorio.md             ← ✓ Texto extraído
+├── foto_documento.jpg
+└── foto_documento.md        ← ✓ Texto extraído
 ```
 
-### Formato do Arquivo .md
+### Formato do Arquivo Gerado
 
 ```markdown
 # contrato.pdf
 
-**Extraído em:** 03/03/2026 11:15:30
+**Extraído em:** 03/03/2026 12:30:45
 
 ---
 
-[Texto limpo e formatado extraído do documento]
+[Texto limpo e formatado do documento]
 ```
 
 ## 🔍 Formatos Suportados
 
-| Formato | Extensão | Tipo |
-|---------|----------|------|
-| PNG | `.png` | Imagem |
-| JPEG | `.jpg`, `.jpeg` | Imagem |
-| GIF | `.gif` | Imagem |
-| BMP | `.bmp` | Imagem |
-| TIFF | `.tiff`, `.tif` | Imagem |
-| WebP | `.webp` | Imagem |
-| PDF | `.pdf` | Documento |
+| Tipo | Extensões | Status |
+|------|-----------|--------|
+| **Imagens** | `.png`, `.jpg`, `.jpeg`, `.gif`, `.bmp`, `.tiff`, `.webp` | ✅ Suportado |
+| **PDFs** | `.pdf` | ✅ Suportado |
 
-## 🎯 Limpeza de Texto
+## 🎯 Processamento de Texto
 
-O sistema automaticamente:
-- ✅ Remove caracteres de controle
-- ✅ Elimina espaços extras
-- ✅ Une palavras hifenizadas
-- ✅ Corrige quebras de linha
-- ✅ Normaliza pontuação
-- ✅ Remove linhas vazias múltiplas
+A aplicação automaticamente:
 
-## 🐛 Troubleshooting
+- ✅ Remove caracteres de controle indesejados
+- ✅ Elimina espaços extras e múltiplos
+- ✅ Une palavras hifenizadas no final da linha
+- ✅ Corrige quebras de linha incorretas
+- ✅ Normaliza pontuação e espaçamento
+- ✅ Remove linhas vazias excessivas
 
-### 🪟 Windows
+## 💡 Dicas de Uso
 
-#### Erro: "tesseract is not installed"
-```powershell
-# Verificar instalação
-tesseract --version
+### Para Melhores Resultados
 
-# Adicionar ao PATH manualmente
-# Windows + R → sysdm.cpl → Variáveis de Ambiente
-# Editar "Path" → Adicionar: C:\Program Files\Tesseract-OCR
-# Reiniciar terminal
+- 📷 Use imagens com **boa resolução** (mínimo 300 DPI)
+- 🔆 Certifique-se de que o documento está **bem iluminado**
+- 📐 Mantenha o documento **reto** (sem inclinação)
+- 🎨 Evite fundos com **muito ruído** ou **sombras**
+- 📄 Imagens em **preto e branco** funcionam melhor que coloridas
+
+### Dicas de Performance
+
+- 🚀 Processe em **lotes de até 50 arquivos** por vez
+- 💾 Use **SSD** ao invés de HD para processamento mais rápido
+- 🖼️ Redimensione imagens muito grandes antes do processamento
+- 🔄 Feche outros programas pesados durante o processamento
+
+## 🐛 Solução de Problemas
+
+### Windows
+
+**❌ Erro: "tesseract is not installed"**
+
+Solução:
+1. Verifique a instalação: `tesseract --version`
+2. Se não funcionar, adicione ao PATH:
+   - Pressione `Windows + R`
+   - Digite `sysdm.cpl` e pressione Enter
+   - Aba "Avançado" → "Variáveis de Ambiente"
+   - Edite "Path" e adicione: `C:\Program Files\Tesseract-OCR`
+   - Reinicie o terminal
+
+**❌ Erro: "python não é reconhecido"**
+
+Solução:
+- Use `py` ao invés de `python`
+- Ou reinstale Python marcando "Add to PATH"
+
+**❌ Erro: "Failed to load por.traineddata"**
+
+Solução:
+- Instale o pacote português: `choco install tesseract-lang-por`
+- Ou baixe manualmente e copie para a pasta tessdata
+
+### Linux
+
+**❌ Erro: "tesseract: command not found"**
+```bash
+sudo apt-get install tesseract-ocr tesseract-ocr-por
 ```
 
-#### Erro: "python não é reconhecido"
-```powershell
-# Use 'py' ao invés de 'python'
-py main.py
-
-# Ou reinstale Python marcando "Add to PATH"
+**❌ Erro: "ModuleNotFoundError"**
+```bash
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
-#### Erro: "Failed to load tessdata/por.traineddata"
-```powershell
-# Baixar pacote português
-# https://github.com/tesseract-ocr/tessdata_best/raw/main/por.traineddata
+### Problemas Comuns
 
-# Copiar para:
-# C:\Program Files\Tesseract-OCR\tessdata\
-```
+**OCR não reconhece texto corretamente:**
+- Verifique a qualidade da imagem
+- Use imagens com maior resolução
+- Certifique-se de que o documento está em português
+- Melhore o contraste da imagem
 
-#### Erro: "No module named 'flet'"
+**Aplicação não abre:**
+- Execute via terminal para ver mensagens de erro
+- Verifique se Python 3.12+ está instalado
+- Certifique-se de que o ambiente virtual está ativado
+
+## 📦 Criar Executável
+
+Para distribuir o projeto como executável:
+
+### Windows
 ```powershell
 # Ativar ambiente virtual
 .venv\Scripts\activate
 
-# Instalar dependências
-pip install -r requirements.txt
+# Instalar PyInstaller
+pip install -r requirements-build.txt
+
+# Criar executável
+.\build.ps1
+
+# Resultado: dist\OCR_Pipeline.exe
 ```
 
-#### Erro: "Scripts is disabled"
-```powershell
-# Executar como Administrador
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-### 🐧 Linux
-
-#### Erro: "tesseract is not installed"
-```bash
-sudo apt-get install tesseract-ocr tesseract-ocr-por
-tesseract --version
-```
-
-#### Erro: "ModuleNotFoundError"
-```bash
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-#### Erro: "markitdown not found"
-```bash
-pip install markitdown
-which markitdown
-```
-
-### 🔧 Problemas Comuns (Todas as Plataformas)
-
-#### OCR não reconhece texto
-- Use imagens com boa resolução (300+ DPI)
-- Melhore o contraste da imagem
-- Evite imagens borradas ou com ruído
-- Verifique se o idioma está correto (português)
-
-#### Processamento lento
-- Processe em lotes menores (máximo 50 arquivos)
-- Reduza resolução de imagens muito grandes
-- Use SSD ao invés de HD
-
-## 🎯 Criar Executável (.exe para Windows)
-
-### Pré-requisitos
-
-- Python 3.12+ instalado
-- Projeto configurado (ambiente virtual + dependências)
-- PyInstaller
-
-### Passos para Criar o Executável
-
-#### 🪟 Windows
-
-1. **Ativar Ambiente Virtual**
-   ```powershell
-   .venv\Scripts\activate
-   ```
-
-2. **Instalar Dependências de Build**
-   ```powershell
-   pip install -r requirements-build.txt
-   ```
-
-3. **Executar Script de Build**
-   ```powershell
-   .\build.ps1
-   ```
-
-4. **Resultado**
-   - Executável criado em: `dist\OCR_Pipeline.exe`
-   - Tamanho aproximado: 80-120 MB
-   - Pronto para distribuir!
-
-#### 🐧 Linux
-
+### Linux
 ```bash
 # Ativar ambiente virtual
 source .venv/bin/activate
 
-# Instalar dependências de build
+# Instalar PyInstaller
 pip install -r requirements-build.txt
 
-# Executar script de build
+# Criar executável
 ./build.sh
 
-# Resultado em: dist/OCR_Pipeline
+# Resultado: dist/OCR_Pipeline
 ```
 
-### ⚠️ Importante para Distribuição
-
-O executável **NÃO inclui** o Tesseract OCR. Usuários precisam:
-
-1. **Instalar Tesseract OCR separadamente**
-   ```powershell
-   # Windows
-   choco install tesseract
-   
-   # Ou download manual de:
-   # https://github.com/UB-Mannheim/tesseract/wiki
-   ```
-
-2. **Instalar pacote de idioma português**
-   ```powershell
-   choco install tesseract-lang-por
-   ```
-
-3. **Adicionar Tesseract ao PATH** (se necessário)
-
-### 📦 Distribuição
-
-**Arquivos para distribuir:**
-```
-OCR_Pipeline/
-├── OCR_Pipeline.exe         # Executável principal
-└── README_DISTRIBUIÇÃO.txt  # Instruções para usuários
-```
-
-**README_DISTRIBUIÇÃO.txt deve conter:**
-- Link para download do Tesseract
-- Instruções de instalação do português
-- Como adicionar ao PATH
-- Como usar a aplicação
-
-### 🔧 Build Personalizado
-
-Para customizar o build, edite `build.spec`:
-
-```python
-# Adicionar ícone
-icon='icone.ico'
-
-# Incluir arquivos extras
-datas=[('recursos/', 'recursos/')],
-
-# Mudar nome
-name='MeuOCR'
-```
-
-Depois execute:
-```powershell
-pyinstaller build.spec --clean
-```
-
-### 📊 Tamanhos Aproximados
-
-| Plataforma | Tamanho do Executável |
-|------------|----------------------|
-| Windows 10/11 | 80-120 MB |
-| Linux (Ubuntu) | 60-90 MB |
-
-### ⚡ Build Otimizado (Menor Tamanho)
-
-Para reduzir o tamanho do executável:
-
-1. **Editar build.spec**
-   ```python
-   # Mudar para UPX máximo
-   upx=True,
-   upx_exclude=[],
-   
-   # Remover debug
-   debug=False,
-   ```
-
-2. **Instalar UPX** (compressor)
-   ```powershell
-   # Windows
-   choco install upx
-   
-   # Linux
-   sudo apt-get install upx
-   ```
-
-3. **Rebuild**
-   ```powershell
-   .\build.ps1
-   ```
-
-### 🐛 Troubleshooting Build
-
-#### Erro: "PyInstaller not found"
-```powershell
-pip install pyinstaller
-```
-
-#### Erro: "Module not found" no executável
-```powershell
-# Adicionar ao hiddenimports no build.spec
-hiddenimports=[
-    'flet',
-    'pytesseract',
-    'PIL',
-    'seu_modulo_aqui',
-],
-```
-
-#### Executável muito grande
-```powershell
-# Use UPX para comprimir
-# Ou crie versão --onedir ao invés de --onefile
-```
-
-#### Erro: "Failed to execute script"
-```powershell
-# Build com console para ver erros
-# Em build.spec: console=True
-pyinstaller build.spec --clean
-```
-
-### Estrutura do Projeto
-
-```
-OCR/
-├── main.py              # Core da aplicação
-├── README.md            # Esta documentação
-├── requirements.txt     # Dependências Python
-├── LICENSE              # Licença MIT
-└── .venv/              # Ambiente virtual (não versionado)
-```
-
-### Fluxo de Processamento
-
-```
-1. Seleção de Diretório
-   ↓
-2. Scan e Detecção de Arquivos
-   ↓
-3. Processamento Individual
-   ├── Imagem → OCR (Tesseract) → PDF temporário → Texto
-   └── PDF → Extração (markitdown) → Texto
-   ↓
-4. Limpeza de Texto (Regex)
-   ↓
-5. Salvar arquivo.md
-```
-
-### Tecnologias
-
-| Componente | Tecnologia | Propósito |
-|------------|-----------|-----------|
-| Interface | Flet 0.81.0 | UI moderna e responsiva |
-| OCR | Tesseract 5.x | Reconhecimento de texto |
-| Python | 3.12+ | Linguagem principal |
-| Processamento Imagem | Pillow | Conversão e manipulação |
-| Extração PDF | markitdown | Extração de texto |
-| Multi-threading | threading | Não travar interface |
-
-## 📝 Dependências
-
-```txt
-flet==0.81.0          # Interface gráfica
-pytesseract==0.3.13   # Wrapper Tesseract
-Pillow==12.1.1        # Processamento de imagens
-markitdown            # Extração de PDF
-```
+**⚠️ Nota:** O executável não inclui o Tesseract OCR. Usuários finais precisam instalá-lo separadamente seguindo as instruções acima.
 
 ## 🔒 Segurança e Privacidade
 
-- ✅ Processamento 100% local
-- ✅ Nenhum dado enviado para internet
-- ✅ Arquivos temporários automaticamente excluídos
-- ✅ Open source e auditável
+- ✅ **Processamento Local** - Todo o processamento é feito no seu computador
+- ✅ **Sem Conexão Internet** - Nenhum dado é enviado para servidores externos
+- ✅ **Código Aberto** - Todo o código é auditável e transparente
+- ✅ **Seus Documentos** - Permanecem privados e sob seu controle
 
-## 📈 Changelog
+## 🤝 Como Contribuir
 
-### v2.0.0 (2026-03-03)
-- ✨ Refatoração completa do código
-- ✨ Arquivo individual por documento
-- ✨ main.py como core único
-- ✨ Código profissional e limpo
-- ✨ Documentação completa Windows/Linux
+Contribuições são muito bem-vindas! Para contribuir:
 
-### v1.0.0 (2026-03-01)
-- ✨ Interface gráfica com Flet
-- ✨ Suporte a múltiplos formatos
-- ✨ Processamento em lote
-- ✨ Limpeza automática de texto
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 🙏 Agradecimentos
-
-- **Tesseract OCR** - Engine de OCR open source
-- **Flet** - Framework Python para interfaces modernas
-- **Markitdown** - Extração de texto de PDFs
-- **Pillow** - Processamento de imagens
-
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas! Para contribuir:
-
-1. Fork o projeto
-2. Crie uma branch (`git checkout -b feature/MinhaFeature`)
+1. Faça um Fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
 3. Commit suas mudanças (`git commit -m 'Adiciona MinhaFeature'`)
 4. Push para a branch (`git push origin feature/MinhaFeature`)
 5. Abra um Pull Request
 
+## 📄 Licença
+
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+## 🙏 Agradecimentos
+
+Este projeto foi possível graças a:
+
+- [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) - Motor de OCR open source
+- [Flet](https://flet.dev/) - Framework para interfaces gráficas em Python
+- [Pillow](https://python-pillow.org/) - Biblioteca de processamento de imagens
+- [markitdown](https://github.com/microsoft/markitdown) - Extração de texto de PDFs
+
 ## 📞 Suporte
 
-Para problemas ou dúvidas:
-- Consulte a seção [Troubleshooting](#-troubleshooting)
-- Abra uma issue no repositório
-- Verifique a documentação
+Encontrou um problema ou tem uma sugestão?
+
+- 🐛 [Abra uma Issue](https://github.com/filipeabraaodasilva/ocr/issues)
+- 💡 [Discussões](https://github.com/filipeabraaodasilva/ocr/discussions)
+- 📧 Entre em contato via Issues do GitHub
+
+## 🌟 Mostre seu Apoio
+
+Se este projeto foi útil para você, considere dar uma ⭐ no repositório!
 
 ---
 
-**Desenvolvido com ❤️ para facilitar a extração de texto de documentos digitalizados.**
+<div align="center">
 
-**Última atualização:** 03/03/2026
+**Desenvolvido com ❤️ para facilitar a digitalização de documentos**
+
+[⬆ Voltar ao topo](#-ocr-pipeline)
+
+</div>
