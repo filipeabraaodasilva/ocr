@@ -1,0 +1,41 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+
+.venv/
+venv/
+ENV/
+env/
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+.DS_Store
+Thumbs.db
+
+*_temp.pdf
+
+*.log
+
+.ipynb_checkpoints/
+*.ipynb
+
+# Arquivos de teste (descomente se não quiser versionar)
+# digitalizado.png
+# digitalizado.pdf
+# *.md
+
+# Build files
+build/
+dist/
+*.spec
+*.exe
+
+# PyInstaller
+*.pyc

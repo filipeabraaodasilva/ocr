@@ -1,0 +1,12 @@
+# Requisitos do Projeto OCR Pipeline
+
+# Dependências do sistema (instalar via apt)
+# sudo apt-get install -y tesseract-ocr tesseract-ocr-por
+
+# Dependências Python
+flet==0.81.0
+pytesseract==0.3.13
+Pillow==12.1.1
+reportlab==4.4.10
+markitdown==0.0.1a6
+pyinstaller>=6.0.0
