@@ -1,332 +1,588 @@
+<div align="center">
+
 # 📄 OCR Pipeline
 
-> Extraia texto de imagens e PDFs com reconhecimento óptico de caracteres (OCR) em português.
+### Extraia texto de imagens e PDFs com reconhecimento óptico inteligente
 
-![Python](https://img.shields.io/badge/python-3.12+-blue.svg)
-![Flet](https://img.shields.io/badge/flet-0.81.0-purple.svg)
-![Tesseract](https://img.shields.io/badge/tesseract-OCR-green.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-lightgrey.svg)
+[![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Flet](https://img.shields.io/badge/Flet-0.81.0-7C3AED?style=for-the-badge&logo=flutter&logoColor=white)](https://flet.dev/)
+[![Tesseract](https://img.shields.io/badge/Tesseract-OCR-00ADD8?style=for-the-badge&logo=google&logoColor=white)](https://github.com/tesseract-ocr/tesseract)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-## 🎯 Sobre o Projeto
+[![Platform](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://www.microsoft.com/windows)
+[![Platform](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://www.linux.org/)
+[![Stars](https://img.shields.io/github/stars/filipeabraaodasilva/ocr?style=for-the-badge&logo=github)](https://github.com/filipeabraaodasilva/ocr/stargazers)
+[![Issues](https://img.shields.io/github/issues/filipeabraaodasilva/ocr?style=for-the-badge&logo=github)](https://github.com/filipeabraaodasilva/ocr/issues)
 
-**OCR Pipeline** é uma aplicação desktop com interface gráfica moderna que permite extrair texto de documentos digitalizados (imagens e PDFs) usando tecnologia OCR (Optical Character Recognition). Ideal para digitalização de documentos, arquivamento e conversão de imagens em texto editável.
+[🚀 Começar](#-instalação) • [📖 Documentação](#-como-usar) • [💡 Exemplos](#-exemplos) • [🐛 Reportar Bug](https://github.com/filipeabraaodasilva/ocr/issues)
 
-### ✨ Principais Características
+<img src="https://raw.githubusercontent.com/filipeabraaodasilva/ocr/main/.github/demo.gif" alt="Demo" width="800"/>
 
-- 🖥️ **Interface Gráfica Moderna** - Design intuitivo e profissional
-- 📁 **Processamento em Lote** - Processe múltiplos arquivos de uma vez
-- 🇧🇷 **OCR em Português** - Reconhecimento otimizado para idioma português
-- 🧹 **Limpeza Automática** - Texto formatado e pronto para uso
-- 📊 **Progresso em Tempo Real** - Acompanhe cada etapa do processamento
-- 💾 **Arquivos Individuais** - Um arquivo .md para cada documento processado
-- 🔒 **100% Local** - Seus dados não saem do seu computador
+*Interface moderna com tema escuro e processamento em tempo real*
 
-## 📸 Screenshots
+---
 
-![Interface Principal](https://via.placeholder.com/800x500?text=Interface+Principal)
+</div>
 
-*Interface moderna com tema escuro e organização clara*
+## 🎯 Sobre
 
-## 🚀 Início Rápido
+**OCR Pipeline** é uma solução moderna e intuitiva para digitalização de documentos. Transforme suas imagens e PDFs em texto editável com apenas alguns cliques, mantendo total privacidade com processamento 100% local.
 
-### 📋 Requisitos
+<table>
+<tr>
+<td>
 
-- **Windows 10/11** ou **Linux** (Ubuntu, Debian, Fedora, Arch)
-- **Python 3.12** ou superior
-- **Tesseract OCR** instalado no sistema
+### ✨ Características
 
-### 🪟 Instalação no Windows
+- 🖥️ Interface gráfica moderna e intuitiva
+- 📁 Processamento em lote eficiente
+- 🇧🇷 OCR otimizado para português
+- 🧹 Limpeza automática de texto
+- 📊 Progresso em tempo real
+- 💾 Arquivos individuais organizados
+- 🔒 100% local e privado
 
-1. **Instale o Python**
-   - Baixe de [python.org/downloads](https://www.python.org/downloads/)
-   - Durante a instalação, marque "Add Python to PATH"
+</td>
+<td>
 
-2. **Instale o Tesseract OCR**
-   
-   **Opção A - Via Chocolatey (recomendado):**
-   ```powershell
-   choco install tesseract
-   ```
-   
-   **Opção B - Instalador Manual:**
-   - Baixe de: [github.com/UB-Mannheim/tesseract/wiki](https://github.com/UB-Mannheim/tesseract/wiki)
-   - Execute o instalador e siga as instruções
+### 🎯 Ideal Para
 
-3. **Instale o Pacote de Idioma Português**
-   ```powershell
-   choco install tesseract-lang-por
-   ```
-   
-   Ou baixe manualmente: [por.traineddata](https://github.com/tesseract-ocr/tessdata_best/raw/main/por.traineddata) e copie para `C:\Program Files\Tesseract-OCR\tessdata\`
+- 📚 Digitalização de livros e documentos
+- 🏢 Arquivamento corporativo
+- 📄 Conversão de PDFs escaneados
+- 📸 Extração de texto de fotos
+- 🗂️ Organização de documentos
+- 📋 Transcrição de formulários
 
-4. **Clone o Projeto**
-   ```powershell
-   git clone https://github.com/filipeabraaodasilva/ocr.git
-   cd ocr
-   ```
+</td>
+</tr>
+</table>
 
-5. **Configure o Ambiente**
-   ```powershell
-   python -m venv .venv
-   .venv\Scripts\activate
-   pip install -r requirements.txt
-   ```
+---
 
-6. **Execute**
-   ```powershell
-   python main.py
-   ```
+## 🚀 Instalação
 
-### 🐧 Instalação no Linux
+<details open>
+<summary><b>🪟 Windows</b> (clique para expandir)</summary>
 
-```bash
-# Instalar dependências do sistema
-sudo apt-get update
-sudo apt-get install -y tesseract-ocr tesseract-ocr-por python3.12 python3.12-venv git
+<br>
 
-# Clonar projeto
+### Passo 1: Python
+
+```powershell
+# Baixe e instale Python 3.12+ de python.org
+# ⚠️ IMPORTANTE: Marque "Add Python to PATH" durante a instalação
+```
+
+<div align="center">
+  <img src="https://img.shields.io/badge/1-Download-blue?style=flat-square" alt="1"/> →
+  <img src="https://img.shields.io/badge/2-Install-blue?style=flat-square" alt="2"/> →
+  <img src="https://img.shields.io/badge/3-Add_to_PATH-blue?style=flat-square" alt="3"/>
+</div>
+
+### Passo 2: Tesseract OCR
+
+**Opção A - Chocolatey (Recomendado):**
+```powershell
+choco install tesseract
+choco install tesseract-lang-por
+```
+
+**Opção B - Instalador Manual:**
+```powershell
+# 1. Baixe de: https://github.com/UB-Mannheim/tesseract/wiki
+# 2. Execute o instalador
+# 3. Baixe o pacote português: por.traineddata
+# 4. Copie para: C:\Program Files\Tesseract-OCR\tessdata\
+```
+
+### Passo 3: Clone e Execute
+
+```powershell
+# Clone o repositório
 git clone https://github.com/filipeabraaodasilva/ocr.git
 cd ocr
 
-# Configurar ambiente
+# Crie o ambiente virtual
+python -m venv .venv
+.venv\Scripts\activate
+
+# Instale as dependências
+pip install -r requirements.txt
+
+# Execute a aplicação
+python main.py
+```
+
+<div align="center">
+
+🎉 **Pronto!** A interface gráfica deve abrir automaticamente.
+
+</div>
+
+</details>
+
+<details>
+<summary><b>🐧 Linux</b> (clique para expandir)</summary>
+
+<br>
+
+### Ubuntu / Debian
+
+```bash
+# Instale as dependências do sistema
+sudo apt-get update
+sudo apt-get install -y tesseract-ocr tesseract-ocr-por python3.12 python3.12-venv git
+
+# Clone o repositório
+git clone https://github.com/filipeabraaodasilva/ocr.git
+cd ocr
+
+# Configure o ambiente
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-# Executar
+# Execute
 python main.py
 ```
 
-## 📖 Como Usar
+### Fedora / RHEL
 
-### Passo a Passo
-
-1. **Abra a Aplicação**
-   ```bash
-   python main.py
-   ```
-
-2. **Selecione o Diretório**
-   - Clique no botão "📁 Selecionar Diretório"
-   - Escolha a pasta contendo seus arquivos (imagens ou PDFs)
-
-3. **Visualize os Arquivos**
-   - A aplicação detecta automaticamente arquivos suportados
-   - Veja a lista com ícones coloridos indicando o tipo
-
-4. **Inicie o Processamento**
-   - Clique em "▶ Processar Arquivos"
-   - Acompanhe o progresso na barra de status
-   - Veja o log detalhado de cada arquivo
-
-5. **Acesse os Resultados**
-   - Arquivos `.md` são criados no mesmo diretório
-   - Um arquivo para cada documento processado
-
-### Exemplo Visual
-
-**Antes do processamento:**
-```
-documentos/
-├── contrato.pdf
-├── relatorio.pdf
-└── foto_documento.jpg
+```bash
+sudo dnf install tesseract tesseract-langpack-por python3 python3-pip git
 ```
 
-**Depois do processamento:**
-```
-documentos/
-├── contrato.pdf
-├── contrato.md              ← ✓ Texto extraído
-├── relatorio.pdf
-├── relatorio.md             ← ✓ Texto extraído
-├── foto_documento.jpg
-└── foto_documento.md        ← ✓ Texto extraído
+### Arch Linux
+
+```bash
+sudo pacman -S tesseract tesseract-data-por python python-pip git
 ```
 
-### Formato do Arquivo Gerado
-
-```markdown
-# contrato.pdf
-
-**Extraído em:** 03/03/2026 12:30:45
+</details>
 
 ---
 
-[Texto limpo e formatado do documento]
+## 📖 Como Usar
+
+<div align="center">
+
+### 🎬 Fluxo de Trabalho
+
+```mermaid
+graph LR
+    A[📁 Selecionar<br/>Diretório] --> B[🔍 Detectar<br/>Arquivos]
+    B --> C[▶️ Processar<br/>Documentos]
+    C --> D[✅ Arquivos .md<br/>Gerados]
+    
+    style A fill:#3b82f6
+    style B fill:#8b5cf6
+    style C fill:#10b981
+    style D fill:#22c55e
 ```
 
-## 🔍 Formatos Suportados
+</div>
 
-| Tipo | Extensões | Status |
-|------|-----------|--------|
-| **Imagens** | `.png`, `.jpg`, `.jpeg`, `.gif`, `.bmp`, `.tiff`, `.webp` | ✅ Suportado |
-| **PDFs** | `.pdf` | ✅ Suportado |
+<table>
+<tr>
+<td width="33%">
 
-## 🎯 Processamento de Texto
+### 1️⃣ Selecione
 
-A aplicação automaticamente:
+<div align="center">
+  <img src="https://img.icons8.com/color/96/000000/folder-invoices--v1.png" alt="Folder" width="64"/>
+</div>
 
-- ✅ Remove caracteres de controle indesejados
-- ✅ Elimina espaços extras e múltiplos
-- ✅ Une palavras hifenizadas no final da linha
-- ✅ Corrige quebras de linha incorretas
-- ✅ Normaliza pontuação e espaçamento
-- ✅ Remove linhas vazias excessivas
+Clique em **"Selecionar Diretório"** e escolha a pasta com seus documentos.
 
-## 💡 Dicas de Uso
+</td>
+<td width="33%">
 
-### Para Melhores Resultados
+### 2️⃣ Processe
 
-- 📷 Use imagens com **boa resolução** (mínimo 300 DPI)
-- 🔆 Certifique-se de que o documento está **bem iluminado**
-- 📐 Mantenha o documento **reto** (sem inclinação)
-- 🎨 Evite fundos com **muito ruído** ou **sombras**
-- 📄 Imagens em **preto e branco** funcionam melhor que coloridas
+<div align="center">
+  <img src="https://img.icons8.com/color/96/000000/process.png" alt="Process" width="64"/>
+</div>
 
-### Dicas de Performance
+Clique em **"Processar Arquivos"** e aguarde o OCR extrair o texto.
 
-- 🚀 Processe em **lotes de até 50 arquivos** por vez
-- 💾 Use **SSD** ao invés de HD para processamento mais rápido
-- 🖼️ Redimensione imagens muito grandes antes do processamento
-- 🔄 Feche outros programas pesados durante o processamento
+</td>
+<td width="33%">
 
-## 🐛 Solução de Problemas
+### 3️⃣ Use
 
-### Windows
+<div align="center">
+  <img src="https://img.icons8.com/color/96/000000/checked--v1.png" alt="Done" width="64"/>
+</div>
 
-**❌ Erro: "tesseract is not installed"**
+Abra os arquivos **.md** gerados com o texto extraído!
 
-Solução:
-1. Verifique a instalação: `tesseract --version`
-2. Se não funcionar, adicione ao PATH:
-   - Pressione `Windows + R`
-   - Digite `sysdm.cpl` e pressione Enter
-   - Aba "Avançado" → "Variáveis de Ambiente"
-   - Edite "Path" e adicione: `C:\Program Files\Tesseract-OCR`
-   - Reinicie o terminal
+</td>
+</tr>
+</table>
 
-**❌ Erro: "python não é reconhecido"**
+---
 
-Solução:
-- Use `py` ao invés de `python`
-- Ou reinstale Python marcando "Add to PATH"
+## 💡 Exemplos
 
-**❌ Erro: "Failed to load por.traineddata"**
+### 📂 Antes do Processamento
 
-Solução:
-- Instale o pacote português: `choco install tesseract-lang-por`
-- Ou baixe manualmente e copie para a pasta tessdata
+```
+📁 meus_documentos/
+├── 📄 contrato.pdf
+├── 📄 relatorio.pdf
+└── 🖼️ foto_documento.jpg
+```
 
-### Linux
+### ✨ Depois do Processamento
 
-**❌ Erro: "tesseract: command not found"**
+```
+📁 meus_documentos/
+├── 📄 contrato.pdf
+├── 📝 contrato.md              ← ✅ Texto extraído (150 KB)
+├── 📄 relatorio.pdf
+├── 📝 relatorio.md             ← ✅ Texto extraído (85 KB)
+├── 🖼️ foto_documento.jpg
+└── 📝 foto_documento.md        ← ✅ Texto extraído (42 KB)
+```
+
+### 📄 Formato do Arquivo Gerado
+
+````markdown
+# contrato.pdf
+
+**Extraído em:** 03/03/2026 13:15:30
+
+---
+
+# CONTRATO DE PRESTAÇÃO DE SERVIÇOS
+
+Este contrato é celebrado entre...
+
+[Texto limpo, formatado e pronto para usar]
+````
+
+---
+
+## 🎨 Formatos Suportados
+
+<div align="center">
+
+| Tipo | Formatos | Suporte |
+|:----:|:---------|:-------:|
+| 🖼️ **Imagens** | PNG, JPG, JPEG, GIF, BMP, TIFF, WEBP | ✅ |
+| 📄 **PDFs** | PDF (nativos e escaneados) | ✅ |
+
+</div>
+
+---
+
+## ⚙️ Processamento Automático
+
+<table>
+<tr>
+<td width="50%">
+
+### 🧹 Limpeza de Texto
+
+- ✅ Remove caracteres de controle
+- ✅ Elimina espaços extras
+- ✅ Une palavras hifenizadas
+- ✅ Corrige quebras de linha
+- ✅ Normaliza pontuação
+- ✅ Remove linhas vazias múltiplas
+
+</td>
+<td width="50%">
+
+### 📊 Otimizações
+
+- ⚡ Multi-threading
+- 🚀 Processamento em lote
+- 💾 Cache inteligente
+- 🔄 Retomada automática
+- 📈 Progresso em tempo real
+- 🎯 Log detalhado
+
+</td>
+</tr>
+</table>
+
+---
+
+## 💡 Dicas Pro
+
+<div align="center">
+
+### 🎯 Para Melhores Resultados
+
+</div>
+
+<table>
+<tr>
+<td align="center" width="25%">
+  <img src="https://img.icons8.com/color/96/000000/high-quality--v1.png" width="48"/><br/>
+  <b>Alta Resolução</b><br/>
+  Mínimo 300 DPI
+</td>
+<td align="center" width="25%">
+  <img src="https://img.icons8.com/color/96/000000/sun--v1.png" width="48"/><br/>
+  <b>Boa Iluminação</b><br/>
+  Evite sombras
+</td>
+<td align="center" width="25%">
+  <img src="https://img.icons8.com/color/96/000000/align-center.png" width="48"/><br/>
+  <b>Documento Reto</b><br/>
+  Sem inclinação
+</td>
+<td align="center" width="25%">
+  <img src="https://img.icons8.com/color/96/000000/high-contrast.png" width="48"/><br/>
+  <b>Alto Contraste</b><br/>
+  P&B preferencial
+</td>
+</tr>
+</table>
+
+---
+
+## 🐛 Problemas Comuns
+
+<details>
+<summary><b>❌ Erro: "tesseract is not installed"</b></summary>
+
+<br>
+
+**Solução Windows:**
+```powershell
+# Verifique a instalação
+tesseract --version
+
+# Se não funcionar, adicione ao PATH:
+# 1. Windows + R → sysdm.cpl
+# 2. Avançado → Variáveis de Ambiente
+# 3. Edite "Path" → Adicione: C:\Program Files\Tesseract-OCR
+# 4. Reinicie o terminal
+```
+
+**Solução Linux:**
 ```bash
 sudo apt-get install tesseract-ocr tesseract-ocr-por
 ```
 
-**❌ Erro: "ModuleNotFoundError"**
-```bash
-source .venv/bin/activate
-pip install -r requirements.txt
-```
+</details>
 
-### Problemas Comuns
+<details>
+<summary><b>❌ OCR não reconhece texto corretamente</b></summary>
 
-**OCR não reconhece texto corretamente:**
-- Verifique a qualidade da imagem
-- Use imagens com maior resolução
-- Certifique-se de que o documento está em português
-- Melhore o contraste da imagem
+<br>
 
-**Aplicação não abre:**
-- Execute via terminal para ver mensagens de erro
-- Verifique se Python 3.12+ está instalado
-- Certifique-se de que o ambiente virtual está ativado
+**Checklist de qualidade:**
+- [ ] Resolução mínima de 300 DPI
+- [ ] Imagem bem iluminada
+- [ ] Documento reto (sem rotação)
+- [ ] Alto contraste
+- [ ] Fonte legível (mínimo 10pt)
+- [ ] Sem blur ou ruído excessivo
+
+**Dica:** Edite a imagem antes do OCR usando ferramentas como GIMP ou Photoshop para melhorar qualidade.
+
+</details>
+
+<details>
+<summary><b>❌ Processamento muito lento</b></summary>
+
+<br>
+
+**Otimizações:**
+- 🔹 Processe em lotes de até 50 arquivos
+- 🔹 Use SSD ao invés de HD
+- 🔹 Feche outros programas pesados
+- 🔹 Redimensione imagens grandes (máx 2000px largura)
+- 🔹 Converta imagens coloridas para P&B antes
+
+</details>
+
+---
 
 ## 📦 Criar Executável
 
-Para distribuir o projeto como executável:
+<div align="center">
 
-### Windows
+### 🎁 Distribua sem Python
+
+</div>
+
 ```powershell
-# Ativar ambiente virtual
+# Windows
 .venv\Scripts\activate
-
-# Instalar PyInstaller
 pip install -r requirements-build.txt
-
-# Criar executável
 .\build.ps1
 
-# Resultado: dist\OCR_Pipeline.exe
+# Resultado: dist\OCR_Pipeline.exe (~100 MB)
 ```
 
-### Linux
 ```bash
-# Ativar ambiente virtual
+# Linux
 source .venv/bin/activate
-
-# Instalar PyInstaller
 pip install -r requirements-build.txt
-
-# Criar executável
 ./build.sh
 
-# Resultado: dist/OCR_Pipeline
+# Resultado: dist/OCR_Pipeline (~80 MB)
 ```
 
-**⚠️ Nota:** O executável não inclui o Tesseract OCR. Usuários finais precisam instalá-lo separadamente seguindo as instruções acima.
+> ⚠️ **Nota:** Tesseract OCR deve ser instalado separadamente pelos usuários finais.
 
-## 🔒 Segurança e Privacidade
+---
 
-- ✅ **Processamento Local** - Todo o processamento é feito no seu computador
-- ✅ **Sem Conexão Internet** - Nenhum dado é enviado para servidores externos
-- ✅ **Código Aberto** - Todo o código é auditável e transparente
-- ✅ **Seus Documentos** - Permanecem privados e sob seu controle
+## 🔒 Segurança & Privacidade
 
-## 🤝 Como Contribuir
+<div align="center">
 
-Contribuições são muito bem-vindas! Para contribuir:
+<table>
+<tr>
+<td align="center" width="25%">
+  <img src="https://img.icons8.com/color/96/000000/lock--v1.png" width="64"/><br/>
+  <b>100% Local</b><br/>
+  Sem envio de dados
+</td>
+<td align="center" width="25%">
+  <img src="https://img.icons8.com/color/96/000000/no-connection--v1.png" width="64"/><br/>
+  <b>Offline</b><br/>
+  Sem internet necessária
+</td>
+<td align="center" width="25%">
+  <img src="https://img.icons8.com/color/96/000000/source-code.png" width="64"/><br/>
+  <b>Open Source</b><br/>
+  Código auditável
+</td>
+<td align="center" width="25%">
+  <img src="https://img.icons8.com/color/96/000000/privacy.png" width="64"/><br/>
+  <b>Privado</b><br/>
+  Seus dados são seus
+</td>
+</tr>
+</table>
 
-1. Faça um Fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona MinhaFeature'`)
-4. Push para a branch (`git push origin feature/MinhaFeature`)
-5. Abra um Pull Request
+</div>
+
+---
+
+## 🤝 Contribuindo
+
+<div align="center">
+
+Contribuições são muito bem-vindas! 🎉
+
+[![Contributors](https://img.shields.io/github/contributors/filipeabraaodasilva/ocr?style=for-the-badge)](https://github.com/filipeabraaodasilva/ocr/graphs/contributors)
+
+</div>
+
+### Como Contribuir
+
+1. 🍴 Fork o projeto
+2. 🌿 Crie sua branch (`git checkout -b feature/MinhaFeature`)
+3. ✅ Commit suas mudanças (`git commit -m 'Adiciona MinhaFeature'`)
+4. 📤 Push para a branch (`git push origin feature/MinhaFeature`)
+5. 🎯 Abra um Pull Request
+
+### Áreas para Contribuir
+
+- 🐛 Correção de bugs
+- ✨ Novas features
+- 📝 Melhorias na documentação
+- 🌍 Traduções
+- 🎨 Melhorias na interface
+- ⚡ Otimizações de performance
+
+---
+
+## 📊 Estatísticas
+
+<div align="center">
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api/pin/?username=filipeabraaodasilva&repo=ocr&theme=radical)
+
+[![Activity](https://img.shields.io/github/commit-activity/m/filipeabraaodasilva/ocr?style=for-the-badge)](https://github.com/filipeabraaodasilva/ocr/commits)
+[![Last Commit](https://img.shields.io/github/last-commit/filipeabraaodasilva/ocr?style=for-the-badge)](https://github.com/filipeabraaodasilva/ocr/commits)
+[![Code Size](https://img.shields.io/github/languages/code-size/filipeabraaodasilva/ocr?style=for-the-badge)](https://github.com/filipeabraaodasilva/ocr)
+
+</div>
+
+---
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+<div align="center">
+
+Este projeto está licenciado sob a **Licença MIT** - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+```
+MIT License - Livre para usar, modificar e distribuir
+```
+
+</div>
+
+---
 
 ## 🙏 Agradecimentos
 
-Este projeto foi possível graças a:
+<div align="center">
 
-- [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) - Motor de OCR open source
-- [Flet](https://flet.dev/) - Framework para interfaces gráficas em Python
-- [Pillow](https://python-pillow.org/) - Biblioteca de processamento de imagens
-- [markitdown](https://github.com/microsoft/markitdown) - Extração de texto de PDFs
+Agradecimentos especiais a:
 
-## 📞 Suporte
+[![Tesseract](https://img.shields.io/badge/Tesseract-OCR-00ADD8?style=for-the-badge&logo=google&logoColor=white)](https://github.com/tesseract-ocr/tesseract)
+[![Flet](https://img.shields.io/badge/Flet-Framework-7C3AED?style=for-the-badge&logo=flutter&logoColor=white)](https://flet.dev/)
+[![Pillow](https://img.shields.io/badge/Pillow-Imaging-8DD6F9?style=for-the-badge&logo=python&logoColor=white)](https://python-pillow.org/)
+[![markitdown](https://img.shields.io/badge/markitdown-PDF-FF6B6B?style=for-the-badge&logo=microsoft&logoColor=white)](https://github.com/microsoft/markitdown)
 
-Encontrou um problema ou tem uma sugestão?
+</div>
 
-- 🐛 [Abra uma Issue](https://github.com/filipeabraaodasilva/ocr/issues)
-- 💡 [Discussões](https://github.com/filipeabraaodasilva/ocr/discussions)
-- 📧 Entre em contato via Issues do GitHub
+---
+
+## 📞 Suporte & Comunidade
+
+<div align="center">
+
+### Precisa de Ajuda?
+
+[![Issues](https://img.shields.io/badge/Issues-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/filipeabraaodasilva/ocr/issues)
+[![Discussions](https://img.shields.io/badge/Discussions-Forum-7289DA?style=for-the-badge&logo=discourse&logoColor=white)](https://github.com/filipeabraaodasilva/ocr/discussions)
+
+### Junte-se à Comunidade
+
+[![Discord](https://img.shields.io/badge/Discord-Comunidade-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/seu-server)
+[![Telegram](https://img.shields.io/badge/Telegram-Grupo-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/seu-grupo)
+
+</div>
+
+---
 
 ## 🌟 Mostre seu Apoio
 
-Se este projeto foi útil para você, considere dar uma ⭐ no repositório!
+<div align="center">
+
+Se este projeto foi útil para você, considere:
+
+⭐ Dar uma **estrela** no repositório<br/>
+🐛 Reportar **bugs** e sugerir **melhorias**<br/>
+🤝 **Contribuir** com código ou documentação<br/>
+📢 **Compartilhar** com outras pessoas
+
+### Apoie o Desenvolvimento
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Apoiar-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/seu-usuario)
+[![PayPal](https://img.shields.io/badge/PayPal-Doar-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/seu-usuario)
+
+</div>
 
 ---
 
 <div align="center">
 
-**Desenvolvido com ❤️ para facilitar a digitalização de documentos**
+### Feito com ❤️ e ☕ no Brasil 🇧🇷
 
-[⬆ Voltar ao topo](#-ocr-pipeline)
+**[⬆ Voltar ao topo](#-ocr-pipeline)**
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
 
 </div>
